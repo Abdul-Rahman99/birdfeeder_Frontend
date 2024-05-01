@@ -190,7 +190,7 @@ const FeedProfile = (props) => {
     const getBirdsDataForGraph = () => {
         let url = api.API_URL + "/api/getBirdsDataForGraph/" + currentFeederId;
         console.log("FilterTypeBirdsNew", FilterTypeBirdsNew)
-        if (dateRangeBirdsNew && dateRangeBirdsNew.length > 0 && FilterTypeBirdsNew && FilterTypeBirdsNew != "" && FilterTypeBirdsNew != "0") {
+        if (dateRangeBirdsNew && dateRangeBirdsNew.length > 0 && FilterTypeBirdsNew && FilterTypeBirdsNew !== "" && FilterTypeBirdsNew !== "0") {
             let dateF = moment(dateRangeBirdsNew[0]).format("YYYY-MM-DD");
 
 
@@ -807,7 +807,7 @@ const FeedProfile = (props) => {
             // return <div className="d-flex justify-content-center">Image Loading...</div>
             // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
             //setImgId(img_id++)
-            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} />
+            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} alt="" />
             // return <img src={'data:image/png;base64,' + window.btoa(camPic)} className={"card-img-top"} style={{ width: "100%" }} id="capture1" />
 
 
@@ -827,7 +827,7 @@ const FeedProfile = (props) => {
             // return <div className="d-flex justify-content-center">Image Loading...</div>
             // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
             //setImgId(img_id++)
-            return <img src={api.API_URL + '/' + camPic2} className={"card-img-top"} style={{ width: "100%" }} />
+            return <img src={api.API_URL + '/' + camPic2} className={"card-img-top"} style={{ width: "100%" }} alt=""/>
             // return <img id="capture2" src={'data:image/png;base64,' + window.btoa(camPic2)} className={"card-img-top"} style={{ width: "100%" }} />
 
 
@@ -1380,7 +1380,7 @@ const FeedProfile = (props) => {
                                             <p className="percent fs-1" id="percent">{tankCapacity}%</p>
                                         </div>
                                         <div className="position-absolute">
-                                            <img src={tankpic} width="220px" height="270px" />
+                                            <img src={tankpic} width="220px" height="270px" alt=""/>
                                         </div>
                                     </div>
                                 </CardBody>
@@ -1404,7 +1404,7 @@ const FeedProfile = (props) => {
                                                 </div>
                                                 <div >
                                                     {/* <Icon icon="ri:temp-hot-line" color="#a33" width="40" height="40" /> */}
-                                                    <img src={temp_pic} width="40" height="40" />
+                                                    <img src={temp_pic} width="40" height="40" alt="" />
                                                 </div>
 
                                             </div>
@@ -1427,7 +1427,7 @@ const FeedProfile = (props) => {
                                                 </div>
                                                 <div >
                                                     {/* <Icon icon="ri:water-percent-fill" color="#0c94e8" width="40" height="40" /> */}
-                                                    <img src={hum_pic} width="40" height="40" />
+                                                    <img src={hum_pic} width="40" height="40" alt=""/>
                                                 </div>
                                             </div>
                                         </CardBody>
@@ -1450,7 +1450,7 @@ const FeedProfile = (props) => {
                                                 <div >
                                                     {/* <Icon icon="ri:battery-2-charge-fill" color="#2c2" width="40" height="40" /> */}
                                                     {
-                                                        btyCur < 0 ? <img src={battery_pic} width="25" height="40" /> : <img src={battery_pic_no} width="25" height="40" />
+                                                        btyCur < 0 ? <img src={battery_pic} width="25" height="40" alt=""/> : <img src={battery_pic_no} width="25" height="40" alt="" />
                                                     }
 
                                                 </div>

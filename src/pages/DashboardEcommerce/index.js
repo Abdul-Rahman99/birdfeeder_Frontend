@@ -266,7 +266,7 @@ peak_res, 18<0.37>18,
         // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
         //setImgId(img_id++)
         // return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} />
-        return <img src={'data:image/jpeg;base64,' + window.btoa(camPic)} style={{ width: "100%" }} />
+        return <img src={'data:image/jpeg;base64,' + window.btoa(camPic)} style={{ width: "100%" }} alt=""/>
 
       }
     } else {
@@ -281,7 +281,7 @@ peak_res, 18<0.37>18,
         // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
         //setImgId(img_id++)
         // return <img src={api.API_URL + '/' + camPic2} className={"card-img-top"} style={{ width: "100%" }} />
-        return <img src={'data:image/jpeg;base64,' + window.btoa(camPic2)} style={{ width: "100%" }} />
+        return <img src={'data:image/jpeg;base64,' + window.btoa(camPic2)} style={{ width: "100%" }} alt=""/>
 
       }
     }

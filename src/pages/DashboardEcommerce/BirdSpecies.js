@@ -43,7 +43,6 @@ const FeedSpecies = () => {
                 </CardHeader>
                 <CardBody>
                   <div className="d-flex align-items-center justify-content-center mt-1">
-                    <h4 className="fs-22 fw-semibold ff-secondary mb-1"></h4>
                     <CountUp
                       start={0}
                       prefix={""}

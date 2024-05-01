@@ -43,10 +43,6 @@ const Login = (props) => {
     } = useSelector(loginData);
 
 
-
-
-
-
     const [userLogin, setUserLogin] = useState([]);
     const [passwordShow, setPasswordShow] = useState(false);
 

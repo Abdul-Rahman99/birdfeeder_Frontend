@@ -106,7 +106,7 @@ const DashboardEcommerce = (props) => {
     //var [img_id, setImgId] = useState(0);
 
 
-    {/*  title, quantity, feed_schedule, feed_time, feed_day  */ }
+    /*  title, quantity, feed_schedule, feed_time, feed_day  */ 
 
     const [title, setTitle] = useState();
     const [quantity, setQuantity] = useState();
@@ -127,7 +127,7 @@ const DashboardEcommerce = (props) => {
             quantity: quantity,
             feed_schedule: feed_schedule,
             feed_time: feed_time,
-            feed_day: feed_day
+            feed_day: feed_day,
         };
         axios.post(api.API_URL + "/api/addSchedule", data)
             .then(res => {
@@ -163,7 +163,7 @@ const DashboardEcommerce = (props) => {
             return <div className="d-flex justify-content-center"><Icon icon="ri:loop-right-fill" color="#ccc" width="50" height="50" /></div>
         } else {
             // return <img src={'data:image/png;base64,' + window.btoa(camPic)} className={"card-img-top"} style={{ width: "100%" }} id={Math.random()} />
-            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} />
+            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} alt=""/>
         }
     };
     const [modal_backdrop, setmodal_backdrop] = useState(false);

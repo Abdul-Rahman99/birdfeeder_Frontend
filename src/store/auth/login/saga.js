@@ -14,7 +14,6 @@ import {
 } from "../../../helpers/fakebackend_helper";
 
 function* loginUser({ payload: { user, history } }) {
- 
   try {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       const fireBaseBackend = getFirebaseBackend();
@@ -25,7 +24,7 @@ function* loginUser({ payload: { user, history } }) {
       );
       if (response) {
         yield put(loginSuccess(response));
-        history('/dashboard')
+        history("/dashboard");
       } else {
         yield put(apiError(response));
       }
@@ -37,8 +36,7 @@ function* loginUser({ payload: { user, history } }) {
       sessionStorage.setItem("authUser", JSON.stringify(response));
       if (response) {
         yield put(loginSuccess(response));
-        history('/dashboard')
-
+        history("/dashboard");
       } else {
         yield put(apiError(response));
       }
@@ -48,32 +46,25 @@ function* loginUser({ payload: { user, history } }) {
         password: user.password,
       });
       if (response.status === "success") {
-        localStorage.setItem('userData', JSON.stringify(response.data));
+        localStorage.setItem("userData", JSON.stringify(response.data));
         yield put(loginSuccess(response));
-        history('/dashboard')
+        history("/dashboard");
         sessionStorage.setItem("authUser", JSON.stringify(response));
-
       } else {
-
         yield put(apiError(response));
       }
     }
-
   } catch (error) {
     let res = {
-      status: 'errors',
-      data: error
-    }
+      status: "errors",
+      data: error,
+    };
     yield put(apiError(res));
-
-
   }
 }
 
 function* logoutUser({ payload: { user, history } }) {
- 
   try {
-   
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       const fireBaseBackend = getFirebaseBackend();
       const response = yield call(fireBaseBackend.logout);
@@ -81,11 +72,10 @@ function* logoutUser({ payload: { user, history } }) {
     } else {
       const response = yield call(postFakeLogout, {});
       if (response.status === "success") {
-
         yield put(loginSuccess(response));
-       
+
         sessionStorage.removeItem("authUser");
-        history('/login')
+        history("/login");
       } else {
         yield put(apiError(response));
       }
@@ -113,7 +103,7 @@ function* socialLogin({ payload: { data, history, type } }) {
       sessionStorage.setItem("authUser", JSON.stringify(response));
       yield put(loginSuccess(response));
     }
-    history('/dashboard');
+    history("/dashboard");
   } catch (error) {
     yield put(apiError(error));
   }

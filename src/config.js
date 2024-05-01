@@ -20,6 +20,6 @@ module.exports = {
 
     // Localhsot
     API_URL: "http://localhost:3001",
-    // SOCKET_API_URL: "http://localhost:3002",
+    SOCKET_API_URL: "http://localhost:3002",
   },
 };

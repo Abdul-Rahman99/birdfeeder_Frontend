@@ -81,8 +81,8 @@ const NotificationDropdown = (props) => {
                                                         <Link to="#" className="stretched-link">
                                                             <h6 className="mt-0 mb-2 lh-base">
                                                                 {
-                                                                    elem.client_topic === "alarmtilt" ? 'Alarm Tilt ' :
-                                                                        elem.client_topic === "alarmmotor" ? 'Alarm Motor ' : 'Alarm Vibration '
+                                                                    elem.client_topic == "alarmtilt" ? 'Alarm Tilt ' :
+                                                                        elem.client_topic == "alarmmotor" ? 'Alarm Motor ' : 'Alarm Vibration '
                                                                 }
                                                                 Notification</h6>
                                                         </Link>

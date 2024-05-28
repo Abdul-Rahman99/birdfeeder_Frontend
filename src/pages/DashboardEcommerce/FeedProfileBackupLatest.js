@@ -190,7 +190,7 @@ const FeedProfile = (props) => {
     const getBirdsDataForGraph = () => {
         let url = api.API_URL + "/api/getBirdsDataForGraph/" + currentFeederId;
         console.log("FilterTypeBirdsNew", FilterTypeBirdsNew)
-        if (dateRangeBirdsNew && dateRangeBirdsNew.length > 0 && FilterTypeBirdsNew && FilterTypeBirdsNew !== "" && FilterTypeBirdsNew !== "0") {
+        if (dateRangeBirdsNew && dateRangeBirdsNew.length > 0 && FilterTypeBirdsNew && FilterTypeBirdsNew != "" && FilterTypeBirdsNew != "0") {
             let dateF = moment(dateRangeBirdsNew[0]).format("YYYY-MM-DD");
 
 
@@ -261,10 +261,10 @@ const FeedProfile = (props) => {
             }
             // if (distance < 0) {
             // clearInterval(x);
-            if (document.getElementById("days") != null && parseInt(document.getElementById("days").innerHTML) === 0 &&
-                document.getElementById("hours") != null && parseInt(document.getElementById("hours").innerHTML) === 0 &&
-                document.getElementById("minutes") != null && parseInt(document.getElementById("minutes").innerHTML) === 0 &&
-                document.getElementById("seconds") != null && parseInt(document.getElementById("seconds").innerHTML) === 0) {
+            if (document.getElementById("days") != null && parseInt(document.getElementById("days").innerHTML) == 0 &&
+                document.getElementById("hours") != null && parseInt(document.getElementById("hours").innerHTML) == 0 &&
+                document.getElementById("minutes") != null && parseInt(document.getElementById("minutes").innerHTML) == 0 &&
+                document.getElementById("seconds") != null && parseInt(document.getElementById("seconds").innerHTML) == 0) {
                 clearInterval(x);
                 // getDeviceDetails()
             }
@@ -317,7 +317,7 @@ const FeedProfile = (props) => {
     }, [myGraphLoader]);
     const getFeedConsumptionData = () => {
         let url = api.API_URL + "/api/getFeedConsumptionData/" + currentFeederId;
-        if (FilterType && FilterType !== "0" && FilterType !== "undefined" && dateRangeNew && dateRangeNew.length === 2) {
+        if (FilterType && FilterType != "0" && FilterType != "undefined" && dateRangeNew && dateRangeNew.length == 2) {
             let dateF = moment(dateRangeNew[0]).format("YYYY-MM-DD");
             let dateT = moment(dateRangeNew[1]).format("YYYY-MM-DD");
             url = url + "/" + FilterType + "/" + dateF + "/" + dateT
@@ -520,10 +520,10 @@ const FeedProfile = (props) => {
 
             socket.on("custom-event", (topic, message, feeder_id) => {
                 // console.log("received socket message: ", topic)
-                if (currentFeederId === feeder_id) {
-                    if (topic === "sensorstatus") {
+                if (currentFeederId == feeder_id) {
+                    if (topic == "sensorstatus") {
                         updateSensorData(message);
-                    } else if (topic === "sensorworking") {
+                    } else if (topic == "sensorworking") {
                         setDht1(message["DHT1"])
                         setDht2(message["DHT2"])
                         setPingW(message["Ping"])
@@ -535,7 +535,7 @@ const FeedProfile = (props) => {
                         setBtyVoltW(message["BtyVoltage"])
                         setSolarVoltW(message["SolarVoltage"])
                         setImuW(message["IMU"])
-                    } else if (topic === "feedingdone") {
+                    } else if (topic == "feedingdone") {
                         configureFeedTimings(message, StrTimings);
                     }
                     // else if (topic == "capture1") {
@@ -548,27 +548,27 @@ const FeedProfile = (props) => {
                     //     setPicture2(message.key)
                     // }
                 }
-                if (topic === "capture1") {
+                if (topic == "capture1") {
                     // console.log("received socket message: ", topic)
-                    if (message.key != null && message.key !== "undefined") {
+                    if (message.key != null && message.key != "undefined") {
                         console.log("received socket message: ", message.key)
                         setPicture(message.key)
                     }
-                } else if (topic === "capture2") {
-                    if (message.key != null && message.key !== "undefined") {
+                } else if (topic == "capture2") {
+                    if (message.key != null && message.key != "undefined") {
                         console.log("received socket message: ", message.key)
                         setPicture2(message.key)
                     }
-                } else if (topic === "Processed1") {
+                } else if (topic == "Processed1") {
                     console.log("received socket message: ", topic)
                     console.log("received socket message: ", message.key)
-                    if (message.key != null && message.key !== "undefined") {
+                    if (message.key != null && message.key != "undefined") {
                         setPicture(message.key)
                     }
-                } else if (topic === "Processed2") {
+                } else if (topic == "Processed2") {
                     console.log("received socket message: ", topic)
                     console.log("received socket message: ", message.key)
-                    if (message.key != null && message.key !== "undefined") {
+                    if (message.key != null && message.key != "undefined") {
                         setPicture2(message.key)
                     }
                 }
@@ -576,7 +576,6 @@ const FeedProfile = (props) => {
         });
     };
 
-    // eslint-disable-next-line no-lone-blocks
     {/*  title, quantity, feed_schedule, feed_time, feed_day  */ }
     const [isNew, setIsNew] = useState("")
     const [title, setTitle] = useState();
@@ -586,11 +585,11 @@ const FeedProfile = (props) => {
     const [feed_day, setMyFeedday] = useState([]);
 
     const setFeedDay = (val, is_enabled) => {
-        if (is_enabled === true) {
-            if (feed_day2.includes(val) === false)
+        if (is_enabled == true) {
+            if (feed_day2.includes(val) == false)
                 feed_day2.push(val)
         } else {
-            if (feed_day2.includes(val) === true) {
+            if (feed_day2.includes(val) == true) {
                 console.log("FeedDay", feed_day2, feed_day2.indexOf(val));
                 feed_day2.splice(feed_day2.indexOf(val), 1);
             }
@@ -619,7 +618,7 @@ const FeedProfile = (props) => {
 
     const getFullDesc = (feed_schedule, feed_time, feed_time_type, feed_day) => {
         // Here it is
-        if (feed_schedule !== "FixedTime") {
+        if (feed_schedule != "FixedTime") {
             let new_feed_time;
             if (feed_time >= 60) {
                 let getHours = feed_time / 60;
@@ -789,17 +788,17 @@ const FeedProfile = (props) => {
         newImg.id = id;
         newImg.className = 'card-img-top'
         newImg.style = 'width:100%';
-        if (img1 != null && img1 !== "undefined")
+        if (img1 != null && img1 != "undefined")
             img1.parentNode.replaceChild(newImg, img1);
     }
     const imgShow = () => {
 
         // return <img className={"card-img-top"} style={{ width: "100%" }} id="capture1" />
-        if (camPic === 0) {
+        if (camPic == 0) {
             return <div className="d-flex justify-content-center">
                 <Spinner size="lg" color="light" className='me-2'> Loading... </Spinner>
             </div>
-        } else if (camPic !== "undefined") {
+        } else if (camPic != "undefined") {
 
             //let img = JSON.parse(camPic);
             //let base64ImageString = Buffer.from(camPic, 'binary').toString('base64')
@@ -807,7 +806,7 @@ const FeedProfile = (props) => {
             // return <div className="d-flex justify-content-center">Image Loading...</div>
             // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
             //setImgId(img_id++)
-            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} alt="" />
+            return <img src={api.API_URL + '/' + camPic} className={"card-img-top"} style={{ width: "100%" }} />
             // return <img src={'data:image/png;base64,' + window.btoa(camPic)} className={"card-img-top"} style={{ width: "100%" }} id="capture1" />
 
 
@@ -815,11 +814,11 @@ const FeedProfile = (props) => {
     };
     const imgShow2 = () => {
         // return <img id="capture2" className={"card-img-top"} style={{ width: "100%" }} />
-        if (camPic2 === 0) {
+        if (camPic2 == 0) {
             return <div className="d-flex justify-content-center">
                 <Spinner size="lg" color="light" className='me-2'> Loading... </Spinner>
             </div>
-        } else if (camPic2 !== "undefined") {
+        } else if (camPic2 != "undefined") {
 
             //let img = JSON.parse(camPic);
             //let base64ImageString = Buffer.from(camPic, 'binary').toString('base64')
@@ -827,7 +826,7 @@ const FeedProfile = (props) => {
             // return <div className="d-flex justify-content-center">Image Loading...</div>
             // return <img src={'data:image/png;base64,' + camPic} width={"350"} height={"280"} />
             //setImgId(img_id++)
-            return <img src={api.API_URL + '/' + camPic2} className={"card-img-top"} style={{ width: "100%" }} alt=""/>
+            return <img src={api.API_URL + '/' + camPic2} className={"card-img-top"} style={{ width: "100%" }} />
             // return <img id="capture2" src={'data:image/png;base64,' + window.btoa(camPic2)} className={"card-img-top"} style={{ width: "100%" }} />
 
 
@@ -845,14 +844,14 @@ const FeedProfile = (props) => {
         const labels = document.querySelectorAll('.radio-label');
         radioInputs.forEach(input => {
 
-            if (input.id === radioId) {
+            if (input.id == radioId) {
                 console.log("test1: ", radioId)
                 input.checked = true;
                 setFeedSchedule(input.value)
                 validateField()
                 labels.forEach(label => {
                     console.log("test2: ", label.previousElementSibling.id, radioId)
-                    if (label.previousElementSibling.id === radioId) {
+                    if (label.previousElementSibling.id == radioId) {
 
                         label.children[0].style.display = 'none';
                         label.children[1].style.display = 'block';
@@ -878,7 +877,7 @@ const FeedProfile = (props) => {
 
     const updateFeedTime = () => {
         let hourMin = timeHours + ":" + timeMinute
-        if (timeMinute && timeHours && timeHours !== "undefined" && timeMinute !== "undefined" && HoursMinutesList.includes(hourMin) === false) {
+        if (timeMinute && timeHours && timeHours != "undefined" && timeMinute != "undefined" && HoursMinutesList.includes(hourMin) == false) {
             if (HoursMinutesList.length <= 20) {
                 HoursMinutesList.push(timeHours + ":" + timeMinute)
                 let getVal = HoursMinutesList.join();
@@ -901,7 +900,7 @@ const FeedProfile = (props) => {
     const [timeMinute, setTimeMinute] = useState("")
     const [timeHours, setTimeHours] = useState("")
     const getHoursMinutesDDL = (type) => {
-        if (type === 0) {
+        if (type == 0) {
             return (<select id="feed_time2" className="form-select rounded-pill" onChange={(e) => setTimeHours(e.target.value)}>
                 <option value={''}>Hours</option>
                 <option value={'00'}>{'00'}</option>
@@ -1000,7 +999,7 @@ const FeedProfile = (props) => {
         switch (feed_schedule) {
             case "Sunrise":
             case "Sunset":
-                if (FeedTimeType !== "fixed" && FeedTimeType !== "") {
+                if (FeedTimeType != "fixed" && FeedTimeType != "") {
                     return <div><select onChange={(e) => { validateField(); setFeedTime(e.target.value); }} value={feed_time} id="feed_time" className="form-select rounded-pill">
                         <option value={""}>Please Select</option>
                         <option value={"1"}>{FeedTimeType} 1 minute</option>
@@ -1077,12 +1076,12 @@ const FeedProfile = (props) => {
         var element_qty = document.getElementById("quantity");
         var element_time = document.getElementById("feed_time");
 
-        if (feed_schedule !== "FixedTime") {
+        if (feed_schedule != "FixedTime") {
             if (feed_day.length > 0) {
                 // alert(feed_day.length)
                 toProcess = true
             }
-            if (element_time !== null && element_time.value !== "") {
+            if (element_time != null && element_time.value != "") {
                 // alert(element_time.value)
                 toProcessFeedTime = true;
             }
@@ -1091,14 +1090,14 @@ const FeedProfile = (props) => {
             toProcess = true;
             toProcessFeedTime = true
             console.log("checkfix", element_time.value);
-            if (feed_schedule === "FixedTime") {
+            if (feed_schedule == "FixedTime") {
                 let txtAr = element_time.value.split(",");
                 console.log("checkfix", txtAr);
                 let eachCheck = true;
                 if (txtAr.length > 0 && txtAr.length <= 20) {
                     txtAr.forEach((elem) => {
                         let indTime = elem.split(":")
-                        if (!indTime || indTime.length === 0 || indTime.length > 2 || indTime[0] > 23 || indTime[1] > 59) {
+                        if (!indTime || indTime.length == 0 || indTime.length > 2 || indTime[0] > 23 || indTime[1] > 59) {
                             eachCheck = false;
                         }
                     })
@@ -1220,11 +1219,11 @@ const FeedProfile = (props) => {
                         </Col>
                     </Row>
                     {
-                        feed_schedule && feed_schedule !== "FixedTime" ? (
+                        feed_schedule && feed_schedule != "FixedTime" ? (
                             <Row >
                                 <Col xl={6}>
                                     <div className="form-check form-radio-primary mb-3">
-                                        <Input className="form-check-input" type="radio" name="formradiocolor1" id="formradio_before" value={"before"} onChange={(e) => setFeedTimeType(e.target.value)} defaultChecked={FeedTimeType === "before" ? true : false} />
+                                        <Input className="form-check-input" type="radio" name="formradiocolor1" id="formradio_before" value={"before"} onChange={(e) => setFeedTimeType(e.target.value)} defaultChecked={FeedTimeType == "before" ? true : false} />
                                         <Label className="form-check-label" for="formradio_before">
                                             Before {feed_schedule}
                                         </Label>
@@ -1233,7 +1232,7 @@ const FeedProfile = (props) => {
                                 <Col xl={6}>
 
                                     <div className="form-check form-radio-primary mb-3">
-                                        <Input className="form-check-input" type="radio" name="formradiocolor1" id="formradio_after" value={"after"} onChange={(e) => setFeedTimeType(e.target.value)} defaultChecked={FeedTimeType === "after" ? true : false} />
+                                        <Input className="form-check-input" type="radio" name="formradiocolor1" id="formradio_after" value={"after"} onChange={(e) => setFeedTimeType(e.target.value)} defaultChecked={FeedTimeType == "after" ? true : false} />
                                         <Label className="form-check-label" for="formradio_after">
                                             After {feed_schedule}
                                         </Label>
@@ -1380,7 +1379,7 @@ const FeedProfile = (props) => {
                                             <p className="percent fs-1" id="percent">{tankCapacity}%</p>
                                         </div>
                                         <div className="position-absolute">
-                                            <img src={tankpic} width="220px" height="270px" alt=""/>
+                                            <img src={tankpic} width="220px" height="270px" />
                                         </div>
                                     </div>
                                 </CardBody>
@@ -1404,7 +1403,7 @@ const FeedProfile = (props) => {
                                                 </div>
                                                 <div >
                                                     {/* <Icon icon="ri:temp-hot-line" color="#a33" width="40" height="40" /> */}
-                                                    <img src={temp_pic} width="40" height="40" alt="" />
+                                                    <img src={temp_pic} width="40" height="40" />
                                                 </div>
 
                                             </div>
@@ -1427,7 +1426,7 @@ const FeedProfile = (props) => {
                                                 </div>
                                                 <div >
                                                     {/* <Icon icon="ri:water-percent-fill" color="#0c94e8" width="40" height="40" /> */}
-                                                    <img src={hum_pic} width="40" height="40" alt=""/>
+                                                    <img src={hum_pic} width="40" height="40" />
                                                 </div>
                                             </div>
                                         </CardBody>
@@ -1450,7 +1449,7 @@ const FeedProfile = (props) => {
                                                 <div >
                                                     {/* <Icon icon="ri:battery-2-charge-fill" color="#2c2" width="40" height="40" /> */}
                                                     {
-                                                        btyCur < 0 ? <img src={battery_pic} width="25" height="40" alt=""/> : <img src={battery_pic_no} width="25" height="40" alt="" />
+                                                        btyCur < 0 ? <img src={battery_pic} width="25" height="40" /> : <img src={battery_pic_no} width="25" height="40" />
                                                     }
 
                                                 </div>

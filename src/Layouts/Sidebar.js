@@ -13,7 +13,6 @@ import { Container } from "reactstrap";
 import HorizontalLayout from "./HorizontalLayout";
 
 const Sidebar = ({ layoutType }) => {
-
   useEffect(() => {
     var verticalOverlay = document.getElementsByClassName("vertical-overlay");
     if (verticalOverlay) {
@@ -25,27 +24,37 @@ const Sidebar = ({ layoutType }) => {
 
   const addEventListenerOnSmHoverMenu = () => {
     // add listener Sidebar Hover icon on change layout from setting
-    if (document.documentElement.getAttribute('data-sidebar-size') === 'sm-hover') {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover-active');
-    } else if (document.documentElement.getAttribute('data-sidebar-size') === 'sm-hover-active') {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover');
+    if (
+      document.documentElement.getAttribute("data-sidebar-size") === "sm-hover"
+    ) {
+      document.documentElement.setAttribute(
+        "data-sidebar-size",
+        "sm-hover-active"
+      );
+    } else if (
+      document.documentElement.getAttribute("data-sidebar-size") ===
+      "sm-hover-active"
+    ) {
+      document.documentElement.setAttribute("data-sidebar-size", "sm-hover");
     } else {
-      document.documentElement.setAttribute('data-sidebar-size', 'sm-hover');
+      document.documentElement.setAttribute("data-sidebar-size", "sm-hover");
     }
   };
 
   return (
     <React.Fragment>
-      <div className="app-menu navbar-menu">
+      <div
+        className="app-menu navbar-menu"
+      >
         <div className="navbar-brand-box">
-          <Link to="/" className="logo logo-dark">
+          {/* <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
               <img src={logoSm} alt="" height="22" />
             </span>
             <span className="logo-lg">
               <img src={logoDark} alt="" height="150" />
             </span>
-          </Link>
+          </Link> */}
 
           <Link to="/" className="logo logo-light">
             <span className="logo-sm">
@@ -73,7 +82,7 @@ const Sidebar = ({ layoutType }) => {
               </ul>
             </Container>
           </div>
-        ) : layoutType === 'twocolumn' ? (
+        ) : layoutType === "twocolumn" ? (
           <React.Fragment>
             <TwoColumnLayout layoutType={layoutType} />
             <div className="sidebar-background"></div>

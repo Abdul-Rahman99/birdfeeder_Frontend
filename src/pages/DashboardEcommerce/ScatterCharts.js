@@ -1,5 +1,8 @@
-import React, {useCallback, useMemo} from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
+import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import avatar2 from "../../assets/images/users/avatar-2.jpg";
+import bird_detect from "../../assets/images/bird_detect.jpg";
 
 import getChartColorsArray from "../../Components/Common/ChartsDynamicColor";
 
@@ -293,16 +296,19 @@ function getMax(arr) {
     return max;
 }
 const ImagesChart = ({ dataColors, BirdsDataForGraph }) => {
-    var chartScatterImagesColors = useCallback(() => getChartColorsArray(dataColors), [dataColors]);
-
-    const series = useMemo(() => [
+    var chartScatterImagesColors = getChartColorsArray(dataColors);
+    const series = [
         {
-            name: "Max Birds Count",
+            name: "Average Birds Count",
             data: BirdsDataForGraph?.birds,
         },
-    ], [BirdsDataForGraph?.birds]);
+        // {
+        //     name: "Camera 2",
+        //     data: BirdsDataForGraph?.birdsB,
+        // },
+    ];
 
-    const options = useMemo(() => ({
+    const options = {
         chart: {
             animations: {
                 enabled: false,
@@ -311,7 +317,7 @@ const ImagesChart = ({ dataColors, BirdsDataForGraph }) => {
                 enabled: true,
                 type: "xy",
                 // type: 'x',
-                autoScaleYaxis: true,
+                // autoScaleYaxis: true,
             },
 
             toolbar: {
@@ -327,24 +333,41 @@ const ImagesChart = ({ dataColors, BirdsDataForGraph }) => {
                 // text: (FilterType == "Daily" ? "Days" : FilterType) || 'Days'
                 text: 'Timeline'
             },
-            tickAmount: 30,
-            min: 0,
+            tickAmount: 50,
+            min: 5,
             max: BirdsDataForGraph?.time?.length,
         },
         yaxis: {
             title: {
-                text: 'Max Birds Count'
+                text: 'Average Birds Count'
             },
             min: 0,
             // max: 100,
             max: getMax(BirdsDataForGraph?.birds) + 10,
             tickAmount: 5,
         },
-
+        // xaxis: {
+        //     tickAmount: 10,
+        //     min: 0,
+        //     max: 20,
+        // },
+        // yaxis: {
+        //     tickAmount: 7,
+        // },
         markers: {
             size: 3,
         },
-
+        // fill: {
+        //     type: "image",
+        //     opacity: 1,
+        //     image: {
+        //         src: [
+        //             bird_detect
+        //         ],
+        //         width: 20,
+        //         height: 20,
+        //     },
+        // },
         legend: {
             labels: {
                 useSeriesColors: true,
@@ -360,17 +383,19 @@ const ImagesChart = ({ dataColors, BirdsDataForGraph }) => {
                 ],
             },
         },
-    }), [BirdsDataForGraph, chartScatterImagesColors]);
+    };
 
     return (
-        <ReactApexChart
-            dir="ltr"
-            className="apex-charts"
-            options={options}
-            series={series}
-            type="scatter"
-            height={350}
-        />
+        <React.Fragment>
+            <ReactApexChart
+                dir="ltr"
+                className="apex-charts"
+                options={options}
+                series={series}
+                type="scatter"
+                height={350}
+            />
+        </React.Fragment>
     );
 };
 

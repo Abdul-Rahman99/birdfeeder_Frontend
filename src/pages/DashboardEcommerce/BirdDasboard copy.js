@@ -46,12 +46,6 @@ const DashboardEcommerce = (props) => {
         mySocketSystem();
         getSchedules();
         console.log("Use Effect")
-
-        return () => {
-            socket.off(`custom-event`)
-            socket.off("connect")
-            socket.disconnect()
-         }
     }, [])
 
     const getTankCapacity = (ping_dist) => {
@@ -106,7 +100,6 @@ const DashboardEcommerce = (props) => {
     //var [img_id, setImgId] = useState(0);
 
 
-    /*  title, quantity, feed_schedule, feed_time, feed_day  */ 
 
     const [title, setTitle] = useState();
     const [quantity, setQuantity] = useState();
@@ -127,7 +120,7 @@ const DashboardEcommerce = (props) => {
             quantity: quantity,
             feed_schedule: feed_schedule,
             feed_time: feed_time,
-            feed_day: feed_day,
+            feed_day: feed_day
         };
         axios.post(api.API_URL + "/api/addSchedule", data)
             .then(res => {

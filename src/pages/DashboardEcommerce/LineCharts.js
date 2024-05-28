@@ -647,22 +647,18 @@ const LinewithDataLabelsSecond = ({ dataColors, myChartData, FilterType, showDat
     );
 };
 
-const LinewithDataLabels = ({ dataColors, type, voltCurrentData }) => {
+const LinewithDataLabels = ({ dataColors, type, BirdsDataForGraph }) => {
 
     var LinewithDataLabelsColors = getChartColorsArray(dataColors);
     var series = [{
         name: "Battery",
-        data: type === "volt" ? voltCurrentData.btyVolt : voltCurrentData.btyCur
-    },
-    {
-        name: "Solar",
-        data: type === "volt" ? voltCurrentData.btyVolt : voltCurrentData.btyCur
+        data: BirdsDataForGraph.birds
     }
     ];
     var options = {
         chart: {
             height: 380,
-            type: 'line',
+            type: 'scatter',
             zoom: {
                 enabled: true
             },
@@ -675,7 +671,7 @@ const LinewithDataLabels = ({ dataColors, type, voltCurrentData }) => {
             enabled: false,
         },
         stroke: {
-            width: [1, 1],
+            width: [1],
             curve: 'straight'
         },
         title: {
@@ -698,16 +694,17 @@ const LinewithDataLabels = ({ dataColors, type, voltCurrentData }) => {
         },
         xaxis: {
             //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            categories: BirdsDataForGraph?.time,
             title: {
-                text: ''
+                text: 'Time'
             }
         },
         yaxis: {
             title: {
-                text: 'Voltages'
+                text: 'Birds Count'
             },
             min: 5,
-            max: 40
+            max: getMax(BirdsDataForGraph?.birds) + 10,
         },
         legend: {
             position: 'top',
@@ -736,7 +733,7 @@ const LinewithDataLabels = ({ dataColors, type, voltCurrentData }) => {
                 dir="ltr"
                 options={options}
                 series={series}
-                type="line"
+                type="scatter"
                 height="380"
                 className="apex-charts"
             />

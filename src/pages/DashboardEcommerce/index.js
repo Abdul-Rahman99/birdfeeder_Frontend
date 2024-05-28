@@ -123,17 +123,10 @@ peak_res, 18<0.37>18,
 
   */
   useEffect(() => {
-    socket = io.connect(api.SOCKET_API_URL)
     mySocketSystem();
     updateVOLTCURRENT();
     updateAlarmNotificationsData();
     console.log("Use Effect")
-
-    return () => {
-      socket.off(`custom-event`)
-      socket.off("connect")
-      socket.disconnect()
-   }
   }, [])
 
   const [voltCurrentData, getVoltCurrentData] = useState([]);

@@ -300,7 +300,7 @@ const SortingTable = ({ pingDist, myData }) => {
       {
         Header: "Feeder Level",
         accessor: (cellProps) => {
-          return <span className={"badge badge-len bg-" + (cellProps.tankLevel <= 30 ? "danger" : (cellProps.tankLevel <= 60 ? "wanring" : "success"))}>{cellProps.tankLevel}%</span>
+          return <span className={"badge badge-len bg-" + (cellProps.tankLevel <= 30 ? "danger" : (cellProps.tankLevel <= 60 ? "info" : "success"))}>{cellProps.tankLevel}%</span>
 
         },
         disableFilters: true,

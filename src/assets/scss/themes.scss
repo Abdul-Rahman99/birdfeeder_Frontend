@@ -231,18 +231,3 @@ input:-webkit-autofill:active {
   color: var(--#{$prefix}body-color) !important;
   -webkit-text-fill-color: var(--#{$prefix}body-color) !important;
 }
-
-@mixin ellapseElm($maxWidth){
-  max-width: $maxWidth;
-  white-space: nowrap !important;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.ellapse-txt {
-  @include ellapseElm(100px)
-}
-
-.color-danger {
-  color: $red
-}
